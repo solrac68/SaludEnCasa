@@ -1,17 +1,8 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Bienvenidos a {{ title }}!
-  </h1>
-  <h2>
-    {{a+b}}
-  </h2>
-  <hr/>
-  <button [disabled] = "!listo" (click) = "hacerAlgo()">Click me!</button>
-  <hr/>
-  Nombre: <input type="text" placeholder="Tu nombre" [(ngModel)]="nombre"/><br/>
-  Apellido: <input type="text" placeholder="Tu apellido" [(ngModel)]="apellido"/><br/>
-  <hr/>
-  Mi nombre es {{nombre}}  {{apellido}}
-</div>
-
+<!-- <ul>
+  <li>Florería la gardenia</li>
+  <li>Donas la pasadita</li>
+  <li>Veterinaria la huellitas felices</li>
+</ul> -->
+<ul>
+  <li *ngFor="let lugar of lugares">{{lugar.nombre}}</li>
+</ul>

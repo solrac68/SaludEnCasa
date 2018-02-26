@@ -7,20 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'PlatziSquares';
-  a = 2;
-  b = 3;
-  listo = false;
-  //nombre = '' -->> Así es en JavaScript
-  nombre:string = '' // ASÍ ES EN typeScript
-  apellido:string = ''
+  lugares:any = [
+    {nombre:'Florería la gardenia'},
+    {nombre:'Donas la pasadita'},
+    {nombre:'Veterinaria la huellitas felices'},
+    {nombre:'Florería la gardenia'},
+    {nombre:'Donas la pasadita'},
+    {nombre:'Veterinaria la huellitas felices'}
+  ];
 
   constructor() {
-    setTimeout(() => {
-      this.listo = true;
-    },3000)
   }
 
-  hacerAlgo(){
-    alert('Haciendo Algo')
-  }
 }
