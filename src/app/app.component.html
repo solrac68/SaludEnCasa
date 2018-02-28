@@ -1,8 +1,13 @@
-<!-- <ul>
-  <li>Florería la gardenia</li>
-  <li>Donas la pasadita</li>
-  <li>Veterinaria la huellitas felices</li>
-</ul> -->
+<!-- <h1>{{ title }}</h1> -->
+<!-- this creates a google map on the page with the given lat/lng from -->
+<!-- the component as the initial center of the map: -->
+<agm-map [latitude]="lat" [longitude]="lng">
+  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map>
+<br/>
 <ul>
-  <li *ngFor="let lugar of lugares">{{lugar.nombre}}</li>
+<ng-container *ngFor="let lugar of lugares">
+    <li *ngIf="lugar.active" >{{lugar.nombre}}</li>
+</ng-container> 
+  
 </ul>
