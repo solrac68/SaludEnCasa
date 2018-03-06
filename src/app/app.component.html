@@ -1,13 +1,30 @@
-<!-- <h1>{{ title }}</h1> -->
-<!-- this creates a google map on the page with the given lat/lng from -->
-<!-- the component as the initial center of the map: -->
+<br/>
+
 <agm-map [latitude]="lat" [longitude]="lng">
   <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
 </agm-map>
 <br/>
+<h1>Personas activas</h1> 
 <ul>
 <ng-container *ngFor="let lugar of lugares">
     <li *ngIf="lugar.active" >{{lugar.nombre}}</li>
 </ng-container> 
-  
+<br/>
+<h1>Personas mayores</h1> 
+<ng-container *ngFor="let persona of personas">
+  <li *ngIf="persona.edad > 20" >{{persona.nombre}}</li>
+</ng-container>
+
+<br/>
+
+<ng-container *ngFor="let lugar of lugares; let i = index" [ngSwitch]="lugar.cercania">
+    <a contar-clicks><li [ngStyle]="{color:(lugar.active) ? 'black':'gray'}" [ngClass]="{numero_par: (i+1)%2 != 0}" [resaltar] = "lugar.plan">
+      {{lugar.nombre}}
+      <!-- <span *ngSwitchCase="1" [ngStyle]="{color:'green'}">Muy Cercano</span>
+      <span *ngSwitchCase="2" [ngStyle]="{color:'blue'}">Cercano</span>
+      <span *ngSwitchCase="3" [ngStyle]="{color:'red'}">Lejano</span> -->
+    </li></a>
+</ng-container> 
+
+
 </ul>
