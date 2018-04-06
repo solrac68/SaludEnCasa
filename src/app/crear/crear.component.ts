@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { LugaresService } from '../services/lugares.service';
 
 @Component({
   selector: 'app-crear',
@@ -7,7 +8,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CrearComponent {
   lugar:any = {};
+  
   guardarLugar(){
-    console.log(this.lugar)
+    this.lugaresService.guardarLugar(this.lugar);
+  }
+
+  constructor(private lugaresService:LugaresService){
+
   }
 }
