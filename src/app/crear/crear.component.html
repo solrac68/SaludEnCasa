@@ -2,31 +2,24 @@
     <a routerLink= "/lugares">Lugares</a> / Crear Lugar
 </div>
 
-<div class="row">
-    <div class="col-sm-6">
-            <div class="card">
-                    <div class="card-body">
-                            <agm-map [latitude]="lat" [longitude]="lng">
-                                    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-                            </agm-map>
-                    </div>
+<div class="card">
+        <div class="card-body">
+                <label>Nombre</label>
+                <input type="text" class="form-control" [(ngModel)]="lugar.nombre"/>
+                <br/>
+                <label>Distancia</label>
+                <input type="number" class="form-control" [(ngModel)]="lugar.distancia"/>  
+                <br/>
+                <label>Cercanía</label>
+                <input type="number" class="form-control" [(ngModel)]="lugar.cercania"/>  
+                <br/>
+                <label>Mensaje</label>
+                <textarea class="form-control" [(ngModel)]="lugar.mensaje"></textarea>
+                <br/>
+                <label>Plan</label>
+                <input type="text" class="form-control"[(ngModel)]="lugar.plan"/>
+                <br/>
+                <a class="btn btn-primary" (click)="guardarLugar()">Enviar</a>
+                <a class="btn btn-secondary" routerLink="/lugares">Cancelar</a>
             </div>
-    </div>
-    <div class="col-sm-6">
-            <div class="card">
-                    <div class="card-body">
-                            <label>Nombre</label>
-                            <input type="text" class="form-control"/>
-                            <br/>
-                            <label>Correo</label>
-                            <input type="email" class="form-control"/>  
-                            <br/>
-                            <label>Mensaje</label>
-                            <textarea class="form-control"></textarea>
-                            <hr/>
-                            <a class="btn btn-primary">Enviar</a>
-                            <a class="btn btn-secondary" routerLink="/lugares">Cancelar</a>
-                        </div>
-            </div>
-    </div>
 </div>

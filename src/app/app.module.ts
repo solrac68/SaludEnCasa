@@ -14,18 +14,17 @@ import {LugaresComponent} from './lugares/lugares.component';
 import {ContactoComponent} from './contacto/contacto.component';
 import { LugaresService } from './services/lugares.service';
 import {CrearComponent} from './crear/crear.component';
-// import { AngularFireModule } from 'angularfire2';
-// import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
-// import { AngularFireAuthModule } from 'angularfire2/auth';
-// import {CrearComponent} from './crear/crear.component';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
-// export const firebaseConfig = {
-//   apiKey: "AIzaSyCWXcmYv1YK7hmIvbjQuoCDotuUzD71ymU",
-//   authDomain: "platzisquare-4e1ba.firebaseapp.com",
-//   databaseURL: "https://platzisquare-4e1ba.firebaseio.com",
-//   storageBucket: "platzisquare-4e1ba.appspot.com",
-//   messagingSenderId: "1000175685850"
-// };
+export const firebaseConfig = {
+  apiKey: "AIzaSyCWXcmYv1YK7hmIvbjQuoCDotuUzD71ymU",
+  authDomain: "platzisquare-4e1ba.firebaseapp.com",
+  databaseURL: "https://platzisquare-4e1ba.firebaseio.com",
+  storageBucket: "platzisquare-4e1ba.appspot.com",
+  messagingSenderId: "1000175685850"
+};
 
 const appRoutes:Routes = [
   {path:'', component: LugaresComponent},
@@ -52,10 +51,10 @@ const appRoutes:Routes = [
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDdNAZdMByjs7ysJtrnacOvuu2w8GSEbk4'
     }),
-    RouterModule.forRoot(appRoutes)
-    // AngularFireModule.initializeApp(firebaseConfig),
-    // AngularFireDatabaseModule,
-    // AngularFireAuthModule
+    RouterModule.forRoot(appRoutes),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   providers: [LugaresService],
   bootstrap: [AppComponent]

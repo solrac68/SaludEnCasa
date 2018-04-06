@@ -6,6 +6,8 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './crear.component.html'
 })
 export class CrearComponent {
-  // lat:number = 6.1577835;
-  // lng:number = -75.616915;
+  lugar:any = {};
+  guardarLugar(){
+    console.log(this.lugar)
+  }
 }
