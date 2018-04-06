@@ -15,7 +15,7 @@ export class LugaresService{
       ];
 
     constructor(private afDB:AngularFireDatabase){
-        
+
     }
     public getLugares(){
         return this.lugares;
@@ -27,5 +27,6 @@ export class LugaresService{
 
     public guardarLugar(lugar){
         console.log(lugar)
+        this.afDB.database.ref('lugares/1').set(lugar);
     }
 }
