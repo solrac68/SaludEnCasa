@@ -9,7 +9,8 @@
       <a class="btn btn-primary" routerLink="/crear">Crear Nuevo Negocio</a>
       <ul class="list-group">
         <ng-container *ngFor="let lugar of lugares">
-            <a routerLink="/detalle/{{lugar.id}}" [queryParams]="{accion:'vista',referencia:'google'}"><li *ngIf="lugar.active" class="list-group-item disabled">{{lugar.nombre}}</li></a>
+            <!-- <a routerLink="/detalle/{{lugar.id}}" [queryParams]="{accion:'vista',referencia:'google'}"><li *ngIf="lugar.active" class="list-group-item disabled">{{lugar.nombre}}</li></a> -->
+            <a routerLink="/detalle/{{lugar.id}}" [queryParams]="{accion:'vista',referencia:'google'}"><li class="list-group-item disabled">{{lugar.nombre}}</li></a>
         </ng-container> 
       </ul>
     </div>

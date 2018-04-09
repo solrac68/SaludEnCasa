@@ -12,6 +12,8 @@ export class CrearComponent {
   guardarLugar(){
     this.lugar.id = Date.now(); // Para generar un id diferente cada vez ... 
     this.lugaresService.guardarLugar(this.lugar);
+    alert('Negocio guardado con éxito');
+    this.lugar = {};
   }
 
   constructor(private lugaresService:LugaresService){

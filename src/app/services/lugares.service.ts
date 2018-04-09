@@ -18,7 +18,8 @@ export class LugaresService{
 
     }
     public getLugares(){
-        return this.lugares;
+        //return this.lugares;
+        return this.afDB.list('lugares/')
     }
 
     public buscarLugar(id){

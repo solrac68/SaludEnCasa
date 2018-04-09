@@ -14,7 +14,13 @@ export class LugaresComponent {
   lugares = null
 
   constructor(private lugaresService:LugaresService) {
-    this.lugares = lugaresService.getLugares();
+    //this.lugares = lugaresService.getLugares();
+    //Se cambia por que lo retornado es una promesa
+    lugaresService.getLugares()
+          .valueChanges().subscribe((lugares)=>{
+          //debugger;
+          this.lugares = lugares;
+        });
   }
 
 }
