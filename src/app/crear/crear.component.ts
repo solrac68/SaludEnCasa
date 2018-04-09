@@ -10,6 +10,7 @@ export class CrearComponent {
   lugar:any = {};
   
   guardarLugar(){
+    this.lugar.id = Date.now(); // Para generar un id diferente cada vez ... 
     this.lugaresService.guardarLugar(this.lugar);
   }
 
