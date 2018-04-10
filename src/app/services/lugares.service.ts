@@ -1,20 +1,11 @@
 import { Injectable } from "@angular/core";
 import { AngularFireDatabase } from "angularfire2/database";
+import {Http} from "@angular/http"
 
 @Injectable()
 export class LugaresService{
-    lugares:any = [
-        {id:1,plan:'pagado',cercania:1,distancia:1,active:true, nombre:'Florería la gardenia'},
-        {id:2,plan:'gratuito',cercania:1,distancia:1.8,active:true, nombre:'Donas la pasadita'},
-        {id:3,plan:'gratuito',cercania:2,distancia:5,active:true, nombre:'Veterinaria la huellitas felices'},
-        {id:4,plan:'gratuito',cercania:3,distancia:10,active:true, nombre:'Sushi Suhiroll'},
-        {id:5,plan:'pagado',cercania:3,distancia:35,active:true, nombre:'Holtel la Gracia'},
-        {id:6,plan:'gratuito',cercania:3,distancia:120,active:true, nombre:'Zapateria el clavo'},
-        {id:7,plan:'pagado',cercania:3,distancia:35,active:true, nombre:'Holtel la Gracia'},
-        {id:8,plan:'gratuito',cercania:3,distancia:120,active:true, nombre:'Zapateria el clavo'}
-      ];
 
-    constructor(private afDB:AngularFireDatabase){
+    constructor(private afDB:AngularFireDatabase,private http:Http){
 
     }
     public getLugares(){
@@ -23,11 +14,21 @@ export class LugaresService{
     }
 
     public buscarLugar(id){
-        return this.lugares.filter((lugar) => { return lugar.id == id})[0] || null;
+        return this.afDB.object('lugares/'+id);
     }
 
     public guardarLugar(lugar){
-        console.log(lugar)
-        this.afDB.database.ref('lugares/'+lugar.id).set(lugar);
+        //console.log(lugar)
+        this.afDB.object('lugares/'+lugar.id).set(lugar);
+    }
+
+    public actualizarLugar(lugar){
+        //console.log(lugar)
+        this.afDB.object('lugares/'+lugar.id).update(lugar)
+    }
+
+    public obtenerGeodata(direccion){
+        //http://maps.google.com/maps/api/geocode/json?address=78-43+diagonal+70f,+Bogota,Colombia
+        return this.http.get('http://maps.google.com/maps/api/geocode/json?address='+direccion);
     }
 }
