@@ -1,15 +1,31 @@
 <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">PlatziSquare!</a>
+    <a class="navbar-brand" href="#">Salud en Casa!</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li routerLinkActive="Active">
-          <a class="nav-link"  routerLink="/lugares">Inicio</a>
+          <a class="nav-link"  routerLink="/lugares">Productos</a>
         </li>
         <li routerLinkActive="Active">
-          <a class="nav-link"  routerLink="/contacto">Contacto</a>
+          <a class="nav-link"  routerLink="/contacto">Resumen</a>
+        </li>
+      </ul>
+      <!-- <ul class="nav navbar-nav navbar-right"> -->
+      <!-- <form class="form-inline my-2 my-lg-0"> -->
+      <label class="nav-link" *ngIf="loggedIn">Usuario: {{email}}</label>
+      <ul class="nav navbar-nav navbar-right" *ngIf="!loggedIn">
+        <li routerLinkActive="Active">
+          <a class="nav-link" routerLink="/login">Login</a>
+        </li>
+        <li routerLinkActive="Active">
+          <a class="nav-link" routerLink="/registro">Registro</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" *ngIf="loggedIn">
+        <li routerLinkActive="Active">
+          <a href="#" class="nav-link" (click)="logout()">Logout</a>
         </li>
       </ul>
     </div>

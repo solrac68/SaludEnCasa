@@ -26,7 +26,8 @@ export class CrearComponent {
         }
         else{
           this.lugar.id = Date.now(); // Para generar un id diferente cada vez ... 
-          this.lugaresService.guardarLugar(this.lugar);
+          this.lugaresService.guardarLugar(this.lugar)
+          //.subscribe((r)=>console.log(r), (e)=>console.log(e));
           alert('Negocio guardado con éxito');
         }
         
@@ -41,7 +42,8 @@ export class CrearComponent {
     if(this.id != 'new'){
       lugaresService.buscarLugar(this.id)
         .valueChanges().subscribe((lugar)=>{
-        this.lugar = lugar;
+          // debugger;
+          this.lugar = lugar;
     });
     }
   }

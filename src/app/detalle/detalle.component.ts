@@ -20,7 +20,7 @@ export class DetalleComponent {
     //this.lugar = lugaresService.buscarLugar(this.id);
 
     lugaresService.buscarLugar(this.id)
-      .valueChanges().subscribe((lugar)=>{
+    .valueChanges().subscribe((lugar)=>{
         //debugger
         this.lugar = lugar;
     });

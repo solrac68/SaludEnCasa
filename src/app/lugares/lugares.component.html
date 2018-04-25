@@ -1,16 +1,29 @@
-<agm-map [latitude]="lat" [longitude]="lng">
-    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+<div *ngIf="visible" class="p-3 mb-2 bg-danger text-white">{{error}}</div>
+<agm-map  [latitude]="lat" [longitude]="lng" [zoom]="13">
+    <agm-marker *ngFor="let lugar of lugares" [latitude]="lugar.lat" [longitude]="lugar.lng"></agm-marker>
 </agm-map>
   <br/>
 <div class = "container">
   <div class = "row">
     <div class = "col-md-8"> 
-      <h2>Lugares cercanos</h2>
+      <h2>Lista de productos</h2>
       <a class="btn btn-primary" routerLink="/crear/new">Crear Nuevo Negocio</a>
       <ul class="list-group">
         <ng-container *ngFor="let lugar of lugares">
-            <!-- <a routerLink="/crear/{{lugar.id}}" [queryParams]="{accion:'vista',referencia:'google'}"><li class="list-group-item disabled">{{lugar.nombre}}</li></a> -->
-            <a routerLink="/crear/{{lugar.id}}"><li class="list-group-item disabled">{{lugar.nombre}}</li></a>
+            <li class="list-group-item disabled">
+              <a routerLink="/crear/{{lugar.id}}"> <h3>{{lugar.nombre}}</h3> </a>
+              <br/>
+              <!-- {{lugar.id | date:'fullDate' | uppercase}} -->
+              <!-- {{lugar.id | date:'fullDate' | medium}} -->
+              <!-- {{lugar.id | date:'fullDate' | shortTime}} -->
+              <!-- {{lugar.id | date:'fullDate' | mediumTime}} -->
+              <!-- https://angular.io/api/common/DatePipe -->
+              <!-- https://angular.io/api/common/DecimalPipe -->
+              <!-- {{'123564675.3456345123' | number: '1.2-2'}} -->
+              <small>Creado: {{lugar.id | date:'mediumTime' | uppercase}}</small>
+              <p [innerHtml] = "lugar.mensaje | linkifystr"></p>
+              <br/>
+            </li>
         </ng-container> 
       </ul>
     </div>

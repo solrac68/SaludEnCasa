@@ -18,6 +18,11 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { HttpModule } from '@angular/http';
+import { LinkifystrPipe } from './pipes/linkifystr.pipe';
+import { LoginComponent } from './login/login.component';
+import { RegistroComponent } from './registro/registro.component';
+import { AutorizacionService } from './services/autorizacion.service';
+import {MyGuard} from "./services/my-guard.service";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCWXcmYv1YK7hmIvbjQuoCDotuUzD71ymU",
@@ -32,7 +37,9 @@ const appRoutes:Routes = [
   {path:'lugares', component: LugaresComponent},
   {path:'detalle/:id', component: DetalleComponent},
   {path:'contacto', component: ContactoComponent},
-  {path:'crear/:id', component: CrearComponent}
+  {path:'crear/:id', component: CrearComponent, canActivate:[MyGuard]},
+  {path:'login', component: LoginComponent},
+  {path:'registro', component: RegistroComponent},
 ]
 
 
@@ -44,7 +51,10 @@ const appRoutes:Routes = [
     DetalleComponent,
     LugaresComponent,
     ContactoComponent,
-    CrearComponent
+    CrearComponent,
+    LinkifystrPipe,
+    LoginComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +68,7 @@ const appRoutes:Routes = [
     AngularFireAuthModule,
     HttpModule
   ],
-  providers: [LugaresService],
+  providers: [LugaresService,AutorizacionService, MyGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
