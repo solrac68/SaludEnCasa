@@ -24,12 +24,21 @@ import { RegistroComponent } from './registro/registro.component';
 import { AutorizacionService } from './services/autorizacion.service';
 import {MyGuard} from "./services/my-guard.service";
 
+// export const firebaseConfig = {
+//   apiKey: "AIzaSyCWXcmYv1YK7hmIvbjQuoCDotuUzD71ymU",
+//   authDomain: "platzisquare-4e1ba.firebaseapp.com",
+//   databaseURL: "https://platzisquare-4e1ba.firebaseio.com",
+//   storageBucket: "platzisquare-4e1ba.appspot.com",
+//   messagingSenderId: "1000175685850"
+// };
+
 export const firebaseConfig = {
-  apiKey: "AIzaSyCWXcmYv1YK7hmIvbjQuoCDotuUzD71ymU",
-  authDomain: "platzisquare-4e1ba.firebaseapp.com",
-  databaseURL: "https://platzisquare-4e1ba.firebaseio.com",
-  storageBucket: "platzisquare-4e1ba.appspot.com",
-  messagingSenderId: "1000175685850"
+  apiKey: "AIzaSyDQq68hSiFO8rZ5k4_SmC6zeeHpBY7Pe6Q",
+  authDomain: "saludencasa-ce8a5.firebaseapp.com",
+  databaseURL: "https://saludencasa-ce8a5.firebaseio.com",
+  projectId: "saludencasa-ce8a5",
+  storageBucket: "saludencasa-ce8a5.appspot.com",
+  messagingSenderId: "888087128483"
 };
 
 const appRoutes:Routes = [
