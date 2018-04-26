@@ -14,7 +14,6 @@
       </ul>
       <!-- <ul class="nav navbar-nav navbar-right"> -->
       <!-- <form class="form-inline my-2 my-lg-0"> -->
-      <label class="nav-link" *ngIf="loggedIn">Usuario: {{email}}</label>
       <ul class="nav navbar-nav navbar-right" *ngIf="!loggedIn">
         <li routerLinkActive="Active">
           <a class="nav-link" routerLink="/login">Login</a>
@@ -24,6 +23,7 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right" *ngIf="loggedIn">
+        <li *ngIf="loggedIn"><a href="#" class="nav-link">{{email}}</a></li>
         <li routerLinkActive="Active">
           <a href="#" class="nav-link" (click)="logout()">Logout</a>
         </li>
