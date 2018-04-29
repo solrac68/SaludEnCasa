@@ -26,6 +26,8 @@ import {MyGuard} from "./services/my-guard.service";
 import{ProductoComponent} from './producto/producto.component';
 import{ProductoListComponent} from './producto/producto-list.component';
 import { ProductService } from './services/producto.services';
+import {ShoppingCartComponent} from "./shopping-cart/shopping-cart.component";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 export const firebaseConfig = {
@@ -63,7 +65,8 @@ const appRoutes:Routes = [
     LoginComponent,
     RegistroComponent,
     ProductoComponent,
-    ProductoListComponent
+    ProductoListComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,
