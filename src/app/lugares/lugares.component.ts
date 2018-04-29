@@ -7,7 +7,7 @@ import { LugaresService } from '../services/lugares.service';
 })
 export class LugaresComponent {
 
-  title = 'PlatziSquares';
+  title = 'Salud En Casa';
   
   // lat:number = 6.1577835;
   // lng:number = -75.616915;

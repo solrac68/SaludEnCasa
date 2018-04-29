@@ -1,0 +1,20 @@
+<div class="card">
+    <div class="card-body">
+        <h6 class="text-center">Lista de Productos</h6>
+        <table class="table table-sm table-hover">
+            <body>
+                <tr *ngFor="let productos of productList">
+                    <td>{{productos.nombre}}</td>
+                    <td>{{productos.categoria}}</td>
+                    <td>{{productos.precio}}</td>
+                    <td>
+                        <button>
+                            Comprar
+                        </button>
+                    </td>
+                    
+                </tr>
+            </body>
+        </table>
+    </div>
+</div>

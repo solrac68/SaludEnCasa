@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import {FormsModule} from '@angular/forms'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 
 import { AgmCoreModule } from '@agm/core';
 import { ResaltarDirective } from './directives/resaltar.directive';
@@ -23,14 +23,10 @@ import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { AutorizacionService } from './services/autorizacion.service';
 import {MyGuard} from "./services/my-guard.service";
+import{ProductoComponent} from './producto/producto.component';
+import{ProductoListComponent} from './producto/producto-list.component';
+import { ProductService } from './services/producto.services';
 
-// export const firebaseConfig = {
-//   apiKey: "AIzaSyCWXcmYv1YK7hmIvbjQuoCDotuUzD71ymU",
-//   authDomain: "platzisquare-4e1ba.firebaseapp.com",
-//   databaseURL: "https://platzisquare-4e1ba.firebaseio.com",
-//   storageBucket: "platzisquare-4e1ba.appspot.com",
-//   messagingSenderId: "1000175685850"
-// };
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDQq68hSiFO8rZ5k4_SmC6zeeHpBY7Pe6Q",
@@ -49,6 +45,8 @@ const appRoutes:Routes = [
   {path:'crear/:id', component: CrearComponent, canActivate:[MyGuard]},
   {path:'login', component: LoginComponent},
   {path:'registro', component: RegistroComponent},
+  {path:'producto', component: ProductoComponent},
+  {path:'comprar', component: ProductoListComponent},
 ]
 
 
@@ -63,7 +61,9 @@ const appRoutes:Routes = [
     CrearComponent,
     LinkifystrPipe,
     LoginComponent,
-    RegistroComponent
+    RegistroComponent,
+    ProductoComponent,
+    ProductoListComponent
   ],
   imports: [
     BrowserModule,
@@ -75,9 +75,10 @@ const appRoutes:Routes = [
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    HttpModule
+    HttpModule,
+    ReactiveFormsModule
   ],
-  providers: [LugaresService,AutorizacionService, MyGuard],
+  providers: [LugaresService,AutorizacionService, MyGuard, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
