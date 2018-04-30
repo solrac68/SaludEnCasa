@@ -1,19 +1,34 @@
 <div class="card">
     <div class="card-body">
-        <h6 class="text-center">Lista de Productos</h6>
+        <h6 class="text-center">LISTA DE PRODUCTOS</h6>
         <table class="table table-sm table-hover">
             <body>
+                <p>
+                <label for="buscador">Buscar:</label> <input type="text" class="texto-gris" id="buscador" value="Ingrese la categoría o el producto a buscar"/>
+                <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-plus-circle"></i> Buscar
+                </button>
+                </p>
+                <tr>
+                    <th>PRODUCTO</th><th>CATEGORÍA</th><th>DESCRIPCIÓN</th><th>PRECIO</th><th>IMAGEN</th>
+                </tr>
                 <tr *ngFor="let productos of productList">
                     <td>{{productos.nombre}}</td>
                     <td>{{productos.categoria}}</td>
+                    <td>{{productos.descripcion}}</td>
                     <td>{{productos.precio}}</td>
                     <td>
-                        <button>
-                            Comprar
-                        </button>
+                        <img src="" width="300" height="150">
+                        <label>Cantidad</label>
+                        <input type="number" name="cantidad" style="width: 4em;">
+
                     </td>
                     
                 </tr>
+                <br/>
+                <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-plus-circle"></i> Comprar
+                </button>
             </body>
         </table>
     </div>
