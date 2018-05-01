@@ -43,6 +43,7 @@ export class RegistroComponent {
       console.log("Usuario creado correctamente.");
     });
     this.autorizacionService.registro(this.usuario.email,this.usuario.password);
+    this.autorizacionService.logout();
   }
 
 }

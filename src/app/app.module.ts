@@ -28,7 +28,7 @@ import{ProductoListComponent} from './producto/producto-list.component';
 import { ProductService } from './services/producto.services';
 import { UsuariosService } from './services/usuarios.service';
 import{ UsuariosListComponent } from './registro/registro-userlist.component';
-
+import { MessagingService } from './services/messaging.service';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDQq68hSiFO8rZ5k4_SmC6zeeHpBY7Pe6Q",
@@ -83,7 +83,7 @@ const appRoutes:Routes = [
     HttpModule,
     ReactiveFormsModule
   ],
-  providers: [LugaresService,AutorizacionService, MyGuard, ProductService, UsuariosService],
+  providers: [LugaresService,AutorizacionService, MyGuard, ProductService, UsuariosService, MessagingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
