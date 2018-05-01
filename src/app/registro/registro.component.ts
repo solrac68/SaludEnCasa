@@ -14,4 +14,8 @@ export class RegistroComponent {
   registrar(){
     this.autorizacionService.registro(this.registro.email,this.registro.password);
   }
+
+  guardarUsuario(){
+    console.log(this.registro);
+  }
 }
