@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AutorizacionService } from '../services/autorizacion.service';
+import { UsuariosService } from '../services/usuarios.service';
+
 
 @Component({
   selector: 'app-registro',
@@ -8,14 +10,21 @@ import { AutorizacionService } from '../services/autorizacion.service';
 })
 export class RegistroComponent {
   registro:any = {};
-  constructor(private autorizacionService:AutorizacionService){
+  usuario:any = {};
+
+  constructor(private usuariosService: UsuariosService){
   }
 
-  registrar(){
-    this.autorizacionService.registro(this.registro.email,this.registro.password);
-  }
+  //registrar(){
+  //  this.autorizacionService.registro(this.registro.email,this.registro.password);
+  //}
 
   guardarUsuario(){
-    console.log(this.registro);
+    this.usuario.id = Date.now();
+    console.log(this.usuario);
+    this.usuariosService.createUsuario(this.usuario).then(() =>{
+      this.usuario = {};
+      console.log("Usuario creado correctamente.");
+    });
   }
 }
