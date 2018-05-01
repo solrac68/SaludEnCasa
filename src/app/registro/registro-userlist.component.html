@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-md-offset-3">
+      <h3>Lista Usuarios</h3>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Nombres</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Género</th>
+            <th scope="col">Edad</th>
+            <th scope="col">Email</th>
+            <th scope="col">Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of usuarios">
+              <td>{{usuario.nombres}}</td>
+              <td>{{usuario.apellidos}}</td>
+              <td>{{usuario.genero}}</td>
+              <td>{{usuario.edad}}</td>
+              <td>{{usuario.email}}</td>
+              <td>
+                <button class="btn btn-primary btn-block" (click)="seleccionarUsuario(usuario)"> Editar</button>
+              </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

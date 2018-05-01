@@ -26,6 +26,9 @@ import {MyGuard} from "./services/my-guard.service";
 import{ProductoComponent} from './producto/producto.component';
 import{ProductoListComponent} from './producto/producto-list.component';
 import { ProductService } from './services/producto.services';
+import { UsuariosService } from './services/usuarios.service';
+import{ UsuariosListComponent } from './registro/registro-userlist.component';
+import { MessagingService } from './services/messaging.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import{CheckoutComponent} from './checkout/checkout.component';
 
@@ -49,6 +52,7 @@ const appRoutes:Routes = [
   {path:'registro', component: RegistroComponent},
   {path:'producto', component: ProductoComponent},
   {path:'comprar', component: ProductoListComponent},
+  {path:'usuarios', component: UsuariosListComponent, canActivate:[MyGuard]},
   {path:'checkout', component: CheckoutComponent},
 ]
 
@@ -67,6 +71,7 @@ const appRoutes:Routes = [
     RegistroComponent,
     ProductoComponent,
     ProductoListComponent,
+    UsuariosListComponent,
     CheckoutComponent
   ],
   imports: [
@@ -82,7 +87,7 @@ const appRoutes:Routes = [
     HttpModule,
     ReactiveFormsModule
   ],
-  providers: [LugaresService,AutorizacionService, MyGuard, ProductService],
+  providers: [LugaresService,AutorizacionService, MyGuard, ProductService, UsuariosService, MessagingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
