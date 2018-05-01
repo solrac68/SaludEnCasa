@@ -15,6 +15,10 @@ import { element } from 'protractor';
 
     constructor(private productService: ProductService){}
 
+    comprar(){
+        
+    }
+
     ngOnInit(){
         this.productService.getProductos()
         .snapshotChanges()
