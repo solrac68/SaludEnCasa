@@ -4,6 +4,8 @@ import {Http, Headers} from "@angular/http"
 import 'rxjs/add/operator/map';
 @Injectable()
 export class LugaresService{
+    compras:any = {};
+
     API_ENDPOINT = 'https://platzisquare-4e1ba.firebaseio.com';
     constructor(private afDB:AngularFireDatabase,private http:Http){
 
@@ -43,6 +45,26 @@ export class LugaresService{
         //http://maps.google.com/maps/api/geocode/json?address=78-43+diagonal+70f,+Bogota,Colombia
         return this.http.get('http://maps.google.com/maps/api/geocode/json?address='+direccion);
     }
+
+    public obtenerProductosEnCarrito(email)
+    {
+        return this.afDB.database.ref('compras').orderByChild('usuario').equalTo(email);
+    }
+
+    public obtenerProductos(id)
+    {
+        return this.afDB.object('productos/'+id);
+    }
+
+    public guardarEntrega(entrega){
+        this.afDB.object('entregas/'+entrega.id).set(entrega);
+    }
+
+    public actualizarProductosEnCarrito(compra)
+    {
+        this.afDB.object('compras/'+compra.id).update(compra)
+    }
+
 
     
 }

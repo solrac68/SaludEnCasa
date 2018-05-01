@@ -12,10 +12,13 @@
           <a class="nav-link"  routerLink="/contacto">Resumen</a>
         </li>
         <li routerLinkActive="Active">
-          <a class="nav-link" routerLink="/producto">Producto</a>
+          <a class="nav-link" routerLink="/comprar">Productos</a>
         </li>
         <li routerLinkActive="Active">
-          <a class="nav-link" routerLink="/comprar">Compras</a>
+          <!-- <a class="nav-link" routerLink="/comprar">Compras</a> -->
+          <button type="button" class="btn btn-primary" routerLink="/checkout">
+              Carro: {{numeroProductos}}
+          </button>
         </li>
         <li routerLinkActive="Active">
           <a class="nav-link" routerLink="/usuarios">Usuarios</a>

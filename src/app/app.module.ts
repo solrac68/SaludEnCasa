@@ -29,6 +29,9 @@ import { ProductService } from './services/producto.services';
 import { UsuariosService } from './services/usuarios.service';
 import{ UsuariosListComponent } from './registro/registro-userlist.component';
 import { MessagingService } from './services/messaging.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import{CheckoutComponent} from './checkout/checkout.component';
+
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDQq68hSiFO8rZ5k4_SmC6zeeHpBY7Pe6Q",
@@ -50,7 +53,7 @@ const appRoutes:Routes = [
   {path:'producto', component: ProductoComponent},
   {path:'comprar', component: ProductoListComponent},
   {path:'usuarios', component: UsuariosListComponent, canActivate:[MyGuard]},
-
+  {path:'checkout', component: CheckoutComponent},
 ]
 
 
@@ -68,7 +71,8 @@ const appRoutes:Routes = [
     RegistroComponent,
     ProductoComponent,
     ProductoListComponent,
-    UsuariosListComponent
+    UsuariosListComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
