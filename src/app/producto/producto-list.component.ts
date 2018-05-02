@@ -3,6 +3,11 @@ import { ProductService } from '../services/producto.services';
 import { Producto } from './producto';
 import { NgForm } from '@angular/forms';
 import { element } from 'protractor';
+import { LugaresService } from '../services/lugares.service';
+import { AutorizacionService } from '../services/autorizacion.service';
+import { Router } from '@angular/router';
+
+
 
 @Component({
     selector: 'app-producto-list',
@@ -12,11 +17,35 @@ import { element } from 'protractor';
   export class ProductoListComponent implements OnInit{
 
     productList: Producto[];
+    compra:any = {};
+    email:any = null;
 
-    constructor(private productService: ProductService){}
+    constructor(private autorizacionService:AutorizacionService, private route:Router,private productService: ProductService,private lugaresService:LugaresService){}
 
     comprar(){
-        
+        this.autorizacionService.isLogged()
+      .subscribe((result) => {
+        if(result && result.uid){
+          this.email = this.autorizacionService.getEmail();
+          //debugger;
+          for(let producto of this.productList){
+                if(producto.volumen > 0){
+                    this.compra.id = Date.now();
+                    this.compra.estado = 0;
+                    this.compra.nombre = producto.nombre;
+                    this.compra.precio = producto.precio;
+                    this.compra.usuario = this.email;
+                    this.compra.volumen = producto.volumen;
+                    this.lugaresService.guardarProductosEnCarrito(this.compra);
+                }
+          }
+          this.route.navigate(['checkout']);
+        }else{
+          this.route.navigate(['']);
+        }
+      },(error) => {
+        this.route.navigate(['']);
+      })
     }
 
     ngOnInit(){

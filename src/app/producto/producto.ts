@@ -5,4 +5,5 @@ export class Producto{
     categoria: string;
     precio: number;
     descripcion: string;
+    volumen:number;
 }

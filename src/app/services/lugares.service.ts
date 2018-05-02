@@ -65,6 +65,11 @@ export class LugaresService{
         this.afDB.object('compras/'+compra.id).update(compra)
     }
 
+    public guardarProductosEnCarrito(compra)
+    {
+        this.afDB.object('compras/'+compra.id).set(compra)
+    }
+
 
     
 }

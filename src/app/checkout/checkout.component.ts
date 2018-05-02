@@ -20,7 +20,7 @@ export class CheckoutComponent {
   entrega:any = {};
 
   efectuaPago(){
-    debugger;
+    //debugger;
     this.entrega.id = Date.now();
     this.lugaresService.guardarEntrega(this.entrega);
     for(let compra of this.productosEnCarrito){
@@ -40,7 +40,7 @@ export class CheckoutComponent {
           // NOTA: JAVASCRIPT ES UNA PORQUERÍA DE LENGUAJE PERDÍA VARIAS HORAS
           // HASTA QUE ME DI CUENTA QUE DEBÍA CAMBIAR UNA FUNCIÓN POR UNA ARROW FUNCTION
             lugaresService.obtenerProductosEnCarrito(this.email).on("value",(snapshot)=> {
-              debugger;
+              //debugger;
               let miscompras = snapshot.val();
               miscompras = Object.keys(miscompras).map((key)=>miscompras[key]);
               miscompras = miscompras.filter((obj) => {return obj.estado === 0});
