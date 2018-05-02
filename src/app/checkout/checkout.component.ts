@@ -38,7 +38,7 @@ export class CheckoutComponent {
         if(result && result.uid){
           this.email = this.autorizacionService.getEmail();
           // NOTA: JAVASCRIPT ES UNA PORQUERÍA DE LENGUAJE PERDÍA VARIAS HORAS
-          // HASTA QUE ME DI CUENTA QUE DEBÍA CAMBIAR UNA FUNCIÓN POR UNA ARROW FUNCTION
+          // HASTA QUE ME DI CUENTA QUE DEBÍA CAMBIAR UNA FUNCIÓN POR UNA ARROW FUNCTION ):
             lugaresService.obtenerProductosEnCarrito(this.email).on("value",(snapshot)=> {
               //debugger;
               let miscompras = snapshot.val();
@@ -60,12 +60,6 @@ export class CheckoutComponent {
       },(error) => {
         this.route.navigate(['']);
       })
-
-    // lugaresService.buscarLugar(this.id)
-    // .valueChanges().subscribe((lugar)=>{
-    //     //debugger
-    //     this.lugar = lugar;
-    // });
   }
 }
   

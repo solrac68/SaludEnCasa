@@ -1,3 +1,4 @@
+
 import { Component, OnInit} from '@angular/core';
 import { ProductService } from '../services/producto.services';
 import { Producto } from './producto';
@@ -19,9 +20,23 @@ import { Router } from '@angular/router';
     productList: Producto[];
     compra:any = {};
     email:any = null;
+    consulta:any = null;
 
     constructor(private autorizacionService:AutorizacionService, private route:Router,private productService: ProductService,private lugaresService:LugaresService){}
 
+    buscar(){
+      if(this.consulta === null || this.consulta.length === 0){
+        this.ngOnInit();
+      }
+      else
+      {
+        this.lugaresService.obtenerProductosPorNombre(this.consulta).on("value",(s)=>{
+          let productList = s.val();
+          this.productList = Object.keys(productList).map((key)=>productList[key]);
+        });
+      }
+    }
+    
     comprar(){
         this.autorizacionService.isLogged()
       .subscribe((result) => {

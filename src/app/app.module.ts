@@ -45,7 +45,7 @@ const appRoutes:Routes = [
   {path:'producto', component: ProductoComponent},
   {path:'comprar', component: ProductoListComponent},
   {path:'usuarios', component: UsuariosListComponent, canActivate:[MyGuard]},
-  {path:'checkout', component: CheckoutComponent, canActivate:[MyGuard]},
+  {path:'checkout', component: CheckoutComponent},
 ]
 
 
