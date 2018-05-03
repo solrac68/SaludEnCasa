@@ -27,6 +27,7 @@ import{ UsuariosListComponent } from './registro/registro-userlist.component';
 import { MessagingService } from './services/messaging.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import{CheckoutComponent} from './checkout/checkout.component';
+import { SendMailComponent } from './send-mail/send-mail.component';
 
 
 export const firebaseConfig = {
@@ -60,7 +61,8 @@ const appRoutes:Routes = [
     ProductoComponent,
     ProductoListComponent,
     UsuariosListComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    SendMailComponent
   ],
   imports: [
     BrowserModule,

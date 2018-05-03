@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AutorizacionService } from '../services/autorizacion.service';
 import { UsuariosService } from '../services/usuarios.service';
-
+import { SendMailComponent } from './send-mail/send-mail.component';
 
 @Component({
   selector: 'app-registro',
@@ -17,7 +17,7 @@ export class RegistroComponent {
   x = 0;
   rand = 0;
 
-  constructor(private autorizacionService:AutorizacionService, private usuariosService: UsuariosService){
+  constructor(private autorizacionService:AutorizacionService, private usuariosService: UsuariosService, private sendMailComponent: SendMailComponent){
 
   }
 
@@ -44,6 +44,7 @@ export class RegistroComponent {
     });
     this.autorizacionService.registro(this.usuario.email,this.usuario.password);
     this.autorizacionService.logout();
+    this.sendMailComponent.sendEmail(this.usuario.email, this.usuario.password);
   }
 
 }
