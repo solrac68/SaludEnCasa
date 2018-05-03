@@ -13,7 +13,7 @@ export class SendMailComponent implements OnInit {
 
   sendEmail(emailAddress, content) {
 
-    let url = `https://your-cloud-function-url/function`
+    let url = `https://saludencasa-ce8a5.firebaseapp.com/`
     let params: URLSearchParams = new URLSearchParams();
     let headers = new Headers({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
 
