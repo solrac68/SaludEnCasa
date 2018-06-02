@@ -16,9 +16,14 @@ export class ProductoComponent implements OnInit{
   }
 
   onSubmit(productForm:NgForm){
-    this.productService.insertProducto(productForm.value);
+    if(productForm.value.$key == null){
+      this.productService.insertProducto(productForm.value)
+      alert("Producto ingresado correctamente");
+    }else{
+    this.productService.updateProducto(productForm.value);
+       alert("Producto actualizado correctamente");
+    }
     this.resetForm(productForm);
-
   }
   resetForm(productForm?:NgForm){
     if(productForm != null)

@@ -10,6 +10,8 @@
             <th scope="col">Género</th>
             <th scope="col">Edad</th>
             <th scope="col">Email</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Horario</th>
             <th scope="col">Opciones</th>
           </tr>
         </thead>
@@ -20,6 +22,8 @@
               <td>{{usuario.genero}}</td>
               <td>{{usuario.edad}}</td>
               <td>{{usuario.email}}</td>
+              <td>{{usuario.tipo}}</td>
+              <td>{{usuario.horario}}</td>
               <td>
                 <button class="btn btn-primary btn-block" (click)="seleccionarUsuario(usuario)"> Editar</button>
               </td>

@@ -1,0 +1,36 @@
+<div class="card">
+        <div class="card-body">
+            <h6 class="text-center">LISTA DE PRODUCTOS</h6>
+            <table class="table table-sm table-hover">
+                <body>
+                    <div class="mb-3">
+                         <input type="text" class="form-control" id="buscar" placeholder="Adultos" [(ngModel)]="consulta"/>
+                    </div>
+                        <button class="btn btn-primary btn-lg btn-block"  (click)="buscar()">Consultar</button>
+                    <tr>
+                        <th>PRODUCTO</th><th>CATEGORÍA</th><th>DESCRIPCIÓN</th><th>PRECIO</th><th>IMAGEN</th>
+                    </tr>
+                    <tr *ngFor="let producto of productList">
+                        <td>{{producto.nombre}}</td>
+                        <td>{{producto.categoria}}</td>
+                        <td>{{producto.descripcion}}</td>
+                        <td>{{producto.precio}}</td>
+                        <td>
+                            <img src="{{producto.image}}" width="100" height="50">
+                        </td>
+                        <td>
+                        <a class="btn btn-secondary text-white" (click)=onEdit(producto)>
+                            <i class="far fa-edit"></i>
+                        </a>
+                        <a class="btn btn-danger text-white" (click)=onDelete(producto.$key)>
+                                <i class="far fa-trash-alt"></i>
+                            </a>
+
+                        </td>
+                    </tr>
+                    <br/>
+                </body>
+            </table>
+        
+        </div>
+</div>

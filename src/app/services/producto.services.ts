@@ -25,8 +25,10 @@ export class ProductService{
         this.productoList.push({
             nombre: producto.nombre,
             categoria: producto.categoria,
+            descripcion: producto.descripcion,
             precio: producto.precio,
-            descripcion: producto.descripcion
+            image: producto.image
+            
             
          });
     }
@@ -35,8 +37,10 @@ export class ProductService{
         this.productoList.update(producto.$key, {
             nombre: producto.nombre,
             categoria: producto.categoria,
+            descripcion: producto.descripcion,
             precio: producto.precio,
-            descripcion: producto.descripcion
+            image: producto.image
+            
             
         });
     }

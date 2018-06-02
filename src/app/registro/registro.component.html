@@ -3,6 +3,18 @@
     <div class="col-md-6 col-md-offset-3">
       <h3>Registrarse!</h3>
         <div class="form-group">
+          <label for="tipo usuario">Tipo Usuario</label>
+          <div class="input-group mb-3">
+            <select class="custom-select" onchange="if(this.value=='2') {document.getElementById('Horarios').disabled = false} else {document.getElementById('Horarios').disabled = true}" [(ngModel)]="usuario.tipo">
+              <option selected>Seleccione...</option>
+              <option value= '1'>Administrador</option>
+              <option value='2'>Mensajero</option>
+              <option value='3'>Cliente</option>
+            </select>
+          </div>
+
+        </div>
+        <div class="form-group">
           <label for="nombres">Nombres</label>
           <input type="text" class="form-control" [(ngModel)]="usuario.nombres">
         </div>
@@ -26,7 +38,11 @@
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" class="form-control" id="email" [(ngModel)]="usuario.email">
+          <input type="email" class="form-control" id="email" [(ngModel)]="usuario.email" required>
+        </div>
+        <div class="form-group">
+          <label for="horario">Horarios de trabajo</label>
+          <input type="text" class="form-control" id="Horarios" value="Horario" disabled [(ngModel)]="usuario.horario">
         </div>
         <button class="btn btn-primary btn-block" (click)="guardarUsuario()"> Registrarse</button>
         <button class="btn btn-secondary btn-block"> Cancelar</button>

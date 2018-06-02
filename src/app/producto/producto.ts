@@ -5,5 +5,6 @@ export class Producto{
     categoria: string;
     precio: number;
     descripcion: string;
+    image: string;
     volumen:number;
 }

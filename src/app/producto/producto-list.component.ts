@@ -7,6 +7,8 @@ import { element } from 'protractor';
 import { LugaresService } from '../services/lugares.service';
 import { AutorizacionService } from '../services/autorizacion.service';
 import { Router } from '@angular/router';
+import { UsuariosService } from '../services/usuarios.service';
+import { Usuario } from '../usuario';
 
 
 
@@ -21,8 +23,10 @@ import { Router } from '@angular/router';
     compra:any = {};
     email:any = null;
     consulta:any = null;
+    usuarios:any = [];
 
-    constructor(private autorizacionService:AutorizacionService, private route:Router,private productService: ProductService,private lugaresService:LugaresService){}
+    constructor(private autorizacionService:AutorizacionService, private route:Router,private productService: ProductService,private lugaresService:LugaresService,
+    private usuariosService:UsuariosService){}
 
     buscar(){
       if(this.consulta === null || this.consulta.length === 0){
@@ -63,6 +67,35 @@ import { Router } from '@angular/router';
       })
     }
 
+    gestionarProduct(){
+      this.autorizacionService.isLogged()
+      .subscribe((result) => {
+        if(result && result.uid){
+         
+          this.email = this.autorizacionService.getEmail();
+          this.usuariosService.getUsuarios().valueChanges()
+          .subscribe((fbUsuarios)=>{
+           this.usuarios = fbUsuarios;
+           for(let user of this.usuarios){
+            if(user.email === this.email){
+              if(user.tipo === "1"){
+                this.route.navigate(['productos']);
+              }
+               
+            }
+          }
+           
+        })
+      
+      }else{
+        this.route.navigate(['']);
+      }
+    },(error) => {
+      this.route.navigate(['']);
+    })
+
+    }
+
     ngOnInit(){
         this.productService.getProductos()
         .snapshotChanges()
@@ -76,4 +109,6 @@ import { Router } from '@angular/router';
         });
 
     }
+
+    
   }

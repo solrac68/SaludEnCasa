@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { AutorizacionService } from './services/autorizacion.service';
 import { LugaresService } from './services/lugares.service';
+import { UsuariosService } from './services/usuarios.service';
+import { Usuario } from './usuario';
+import { Router } from '@angular/router';
+import { Key } from 'protractor';
 
 
 @Component({
@@ -14,7 +18,9 @@ export class AppComponent {
   loggedIn = false;
   email = null;
   numeroProductos:any = null;
-  constructor(private autorizacionService:AutorizacionService,private lugaresService:LugaresService){
+  usuarioList:Usuario[];
+  usuario:any;
+  constructor(private autorizacionService:AutorizacionService,private route:Router,private lugaresService:LugaresService){
     this.autorizacionService.isLogged()
       .subscribe((result) => {
         if(result && result.uid){
@@ -26,15 +32,18 @@ export class AppComponent {
             miscompras = Object.keys(miscompras).map((key)=>miscompras[key]);
             miscompras = miscompras.filter((obj) => {return obj.estado === 0});
             this.numeroProductos = miscompras.length;
-        });
 
-        }else{
+        }
+
+        );
+      }else{
           this.loggedIn = false;
         }
       },(error) => {
         this.loggedIn = false;
       })
-  }
+  
+    }
 
   logout(){
     this.autorizacionService.logout();
