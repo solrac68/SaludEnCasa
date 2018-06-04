@@ -23,7 +23,6 @@ export class ProductoComponent implements OnInit{
   resetForm(productForm?:NgForm){
     if(productForm != null)
     productForm.reset();
-    this.productService.selectproducto = new Producto;
 
     
   }

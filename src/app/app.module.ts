@@ -19,14 +19,16 @@ import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { AutorizacionService } from './services/autorizacion.service';
 import {MyGuard} from "./services/my-guard.service";
-import{ProductoComponent} from './producto/producto.component';
-import{ProductoListComponent} from './producto/producto-list.component';
+import {ProductoComponent} from './producto/producto.component';
+import {ProductoListComponent} from './producto/producto-list.component';
 import { ProductService } from './services/producto.services';
 import { UsuariosService } from './services/usuarios.service';
-import{ UsuariosListComponent } from './registro/registro-userlist.component';
+import { UsuariosListComponent } from './registro/registro-userlist.component';
 import { MessagingService } from './services/messaging.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import{CheckoutComponent} from './checkout/checkout.component';
+import {CheckoutComponent} from './checkout/checkout.component';
+import {ProductosComponent} from './admin/Productos.component';
+import {CrearComponent} from './crear/crear.component';
 
 
 export const firebaseConfig = {
@@ -46,6 +48,8 @@ const appRoutes:Routes = [
   {path:'comprar', component: ProductoListComponent},
   {path:'usuarios', component: UsuariosListComponent, canActivate:[MyGuard]},
   {path:'checkout', component: CheckoutComponent},
+  {path:'listaProductos', component: ProductosComponent},
+  {path:'crear/:id', component: CrearComponent, canActivate:[MyGuard]},
 ]
 
 
@@ -60,7 +64,9 @@ const appRoutes:Routes = [
     ProductoComponent,
     ProductoListComponent,
     UsuariosListComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    ProductosComponent,
+    CrearComponent
   ],
   imports: [
     BrowserModule,

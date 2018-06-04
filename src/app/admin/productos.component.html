@@ -1,0 +1,27 @@
+<div class = "container">
+    <h2>Lista de productos</h2>
+    <a class="btn btn-primary" routerLink="/crear/new">Agregar nuevo producto</a>
+    <ul class="list-group">
+      <ng-container *ngFor="let producto of productos">
+        <div class="row align-items-start">
+          <div class="col-8">
+            <li class="list-group-item">
+              <a routerLink="/crear/{{producto.id}}"> <h3>{{producto.nombre}}</h3> </a>
+              <br/>
+              <small>Ingresado: {{producto.id | date:'mediumTime' | uppercase}}</small>
+              <br/>
+              <small>Categoría: {{producto.categoria}}</small>
+              <br/>
+              <small>Precio: ${{producto.precio}}</small>
+              <br/>
+              <a class="fas fa-trash close" (click)="eliminarProducto(producto)"></a>
+              <br/>
+            </li>
+          </div>
+          <div class="col-4">
+              <img src="{{producto.image}}" width="300" height="150">
+          </div>
+        </div>
+      </ng-container> 
+    </ul>
+</div>

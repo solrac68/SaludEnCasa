@@ -1,6 +1,7 @@
 {
   "projects": {
     "saludencasa": "saludencasa-ce8a5",
-    "default": "saludencasa-ce8a5"
+    "default": "saludencasa-ce8a5",
+    "saludencasa2": "saludencasa-ce8a5"
   }
 }

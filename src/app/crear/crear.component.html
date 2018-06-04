@@ -1,43 +1,32 @@
 <div class="alert alert-warning">
-    <a routerLink= "/lugares">Lugares</a> / Crear Lugar
+    <a routerLink= "/listaProductos">Productos</a>
 </div>
 
 <div class="card">
         <div class="card-body">
                 <label>Nombre</label>
-                <input type="text" class="form-control" [(ngModel)]="lugar.nombre"/>
+                <input type="text" class="form-control" required [(ngModel)]="producto.nombre"/>
                 <br/>
-                <label>Distancia</label>
-                <input type="number" class="form-control" [(ngModel)]="lugar.distancia"/>  
+                <label>Descripcion</label>
+                <input type="text" class="form-control" required [(ngModel)]="producto.descripcion"/>  
                 <br/>
-                <label>Cercanía</label>
-                <input type="number" class="form-control" [(ngModel)]="lugar.cercania"/>  
+                <div class="form-group">
+                        <label for="categoria">Categoría</label>
+                        <select class="form-control" name="categoria" required [(ngModel)]="producto.categoria">
+                           <option value="Adultos">Adultos</option>
+                           <option value="Ninos">Ninos</option>
+                           <option value="Mamas">Mamas</option>
+                           <option value="Ancianos">Ancianos</option>
+                        </select>
+                    </div>
                 <br/>
-                <label>Mensaje</label>
-                <textarea class="form-control" [(ngModel)]="lugar.mensaje"></textarea>
+                <label>Precio</label>
+                <input type="numeric" class="form-control" required [(ngModel)]="producto.precio"/>
                 <br/>
-                <label>Plan</label>
-                <input type="text" class="form-control"[(ngModel)]="lugar.plan"/>
-                <h1>Datos de Dirección</h1>
-                <div class="well">
-                    <form>
-                        <label>Buscar Negocio en Google</label>
-                        <input type="text" class="form-control" [formControl]="searchField">
-                    </form>
-                    <ul class="list-group">
-                        <li class="list-group-item" *ngFor="let result of results$ | async" (click)="seleccionarDireccion(result)">{{result.formatted_address}}</li>
-                    </ul>
-                </div>
-                <label>Calle y Número</label>
-                <input type="text" class="form-control"[(ngModel)]="lugar.calle"/>
+                <label>Url-imagen</label>
+                <input type="text" class="form-control" required [(ngModel)]="producto.image"/>
                 <br/>
-                <label>Ciudad</label>
-                <input type="text" class="form-control"[(ngModel)]="lugar.ciudad"/>
-                <br/>
-                <label>Pais</label>
-                <input type="text" class="form-control"[(ngModel)]="lugar.pais"/>
-                <br/>
-                <a class="btn btn-primary" (click)="guardarLugar()">Enviar</a>
-                <a class="btn btn-secondary" routerLink="/lugares">Cancelar</a>
+                <a class="btn btn-primary" (click)="guardarProducto()">Enviar</a>
+                <a class="btn btn-secondary" routerLink="/listaProductos">Cancelar</a>
             </div>
 </div>
