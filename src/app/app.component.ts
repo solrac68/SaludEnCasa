@@ -14,6 +14,7 @@ export class AppComponent {
   loggedIn = false;
   email = null;
   numeroProductos:any = null;
+
   constructor(private autorizacionService:AutorizacionService,private lugaresService:LugaresService){
     this.autorizacionService.isLogged()
       .subscribe((result) => {
@@ -38,6 +39,11 @@ export class AppComponent {
 
   logout(){
     this.autorizacionService.logout();
+  }
+
+  ngOnInit() {
+    //debugger
+    this.lugaresService.cargarBasedeDatosDomicilios();
   }
 
 }

@@ -1,10 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-
 import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
-
 import { AgmCoreModule } from '@agm/core';
 import { ResaltarDirective } from './directives/resaltar.directive';
 import { ContarClicksDirective } from './directives/contar-clicks.directive';
@@ -29,6 +26,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {CheckoutComponent} from './checkout/checkout.component';
 import {ProductosComponent} from './admin/Productos.component';
 import {CrearComponent} from './crear/crear.component';
+import {LugaresComponent} from './lugares/lugares.component';
+import {ActivityListComponent} from './activity-list/activity-list.component';
 
 
 export const firebaseConfig = {
@@ -50,6 +49,8 @@ const appRoutes:Routes = [
   {path:'checkout', component: CheckoutComponent},
   {path:'listaProductos', component: ProductosComponent},
   {path:'crear/:id', component: CrearComponent, canActivate:[MyGuard]},
+  {path:'lugares', component: LugaresComponent},
+  {path:'domicilios', component: ActivityListComponent},
 ]
 
 
@@ -66,7 +67,9 @@ const appRoutes:Routes = [
     UsuariosListComponent,
     CheckoutComponent,
     ProductosComponent,
-    CrearComponent
+    CrearComponent,
+    LugaresComponent,
+    ActivityListComponent
   ],
   imports: [
     BrowserModule,
