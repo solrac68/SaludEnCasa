@@ -3,7 +3,7 @@ import { LugaresService } from '../services/lugares.service';
 import {Observable} from 'rxjs/Rx';
 import { IDomicilio } from '../shared/domicilio.model';
 import { marker } from '../shared/domicilio.model';
-import { SAVED_DOMICILIOS }  from '../shared/domicilios';
+//import { SAVED_DOMICILIOS }  from '../shared/domicilios';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -112,7 +112,7 @@ export class LugaresComponent {
   }
 
   completo(){
-    console.log('Completado: ');
+    //console.log('Completado: ');
     this.posiciones = [];
     this.domicilios.forEach(element => {
       let final = element.markers.length - 1

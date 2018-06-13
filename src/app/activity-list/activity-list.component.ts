@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IDomicilio } from '../shared/domicilio.model';
 import { marker } from '../shared/domicilio.model';
-import { SAVED_DOMICILIOS }  from '../shared/domicilios';
+//import { SAVED_DOMICILIOS }  from '../shared/domicilios';
 import { LugaresService } from '../services/lugares.service';
 import { Router } from "@angular/router";
 

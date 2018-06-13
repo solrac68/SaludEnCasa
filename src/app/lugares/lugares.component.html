@@ -19,12 +19,13 @@
       <div class="row align-items-start">
         <div class="col-12">
           <li class="list-group-item">
-            <h3>Domicilio: {{domicilio.id}} Destinatario: {{ domicilio.destinatario}}</h3>
-            <h4>Estado: {{domicilio.terminado?"Entregado":"En proceso.."}}</h4>
+            <h3>Domicilio {{domicilio.id}}</h3>
+            <small>Destinatario: <strong>{{ domicilio.destinatario}}</strong></small><br/>
             <small>Fecha y hora de salida: {{domicilio.dateInicio | date:'medium' | uppercase}}</small><br/>
             <small>Fecha y hora de entrega: {{domicilio.dateEntrega | date:'medium' | uppercase}}</small><br/>
             <small>Fecha y hora de retorno: {{domicilio.dateRetorno | date:'medium' | uppercase}}</small><br/>
             <div *ngIf="id == 'entrega'">
+              <small>Estado: {{domicilio.terminado?"Entregado":"En proceso..."}}</small><br/>
               <small>Latitud: {{domicilio.posicion.lat}}</small><br/>
               <small>Longitud: {{domicilio.posicion.lng}}</small><br/>
               <small>distancia: {{domicilio.posicion.distance}}</small><br/>

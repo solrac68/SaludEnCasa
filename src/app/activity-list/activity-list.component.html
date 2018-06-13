@@ -23,13 +23,7 @@
         <!-- <td>{{ domicilio.terminado?"Entregado":"Sin enviar"}}</td> -->
         <td><input type="checkbox" name="isActive" [disabled]="domicilio.terminado" [(ngModel)]="domicilio.estado"></td>
       </tr>
-      <tr>
-        <td><a class="btn btn-primary" (click)="entregar()">Iniciar Entrega</a></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
     </tbody>
   </table>
+  <a class="btn btn-primary" (click)="entregar()">Iniciar Entrega</a>
 </div>

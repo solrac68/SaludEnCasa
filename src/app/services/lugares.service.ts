@@ -4,7 +4,7 @@ import {Http, Headers} from "@angular/http"
 import 'rxjs/add/operator/map';
 import { IDomicilio } from '../shared/domicilio.model';
 import { marker } from '../shared/domicilio.model';
-import { SAVED_DOMICILIOS }  from '../shared/domicilios';
+// import { SAVED_DOMICILIOS }  from '../shared/domicilios';
 
 
 @Injectable()
@@ -16,9 +16,10 @@ export class LugaresService{
     constructor(private afDB:AngularFireDatabase,private http:Http){
 
     }
-    public getDomicilios():IDomicilio[]{
-        return SAVED_DOMICILIOS.slice(0);
-    }
+    
+    // public getDomicilios():IDomicilio[]{
+    //     return SAVED_DOMICILIOS.slice(0);
+    // }
 
     public getDomiciliosDB(){
         return this.afDB.object('domicilios/')
@@ -57,21 +58,21 @@ export class LugaresService{
             this.afDB.object('domicilios/'+domicilio.id).set(domicilio);
     }
 
-    public cargarBasedeDatosDomicilios()
-    {
-        let domicilios = this.getDomicilios()
-        for(let i=0;i < domicilios.length;i++){
-            domicilios[i].markers[0].distance = 0
-            let TAMANOMARCAS = domicilios[i].markers.length
-            let acum = 0 
-            for( let j=1;j<TAMANOMARCAS;j++){
-                acum = acum + this.getDistance(domicilios[i].markers[j-1],domicilios[i].markers[j])
-                domicilios[i].markers[j].distance = Math.round(acum)
-            }
-            domicilios[i].distance = domicilios[i].markers[TAMANOMARCAS-1].distance
-            this.afDB.object('domicilios/'+domicilios[i].id).set(domicilios[i]);
-        }
-    }
+    // public cargarBasedeDatosDomicilios()
+    // {
+    //     let domicilios = this.getDomicilios()
+    //     for(let i=0;i < domicilios.length;i++){
+    //         domicilios[i].markers[0].distance = 0
+    //         let TAMANOMARCAS = domicilios[i].markers.length
+    //         let acum = 0 
+    //         for( let j=1;j<TAMANOMARCAS;j++){
+    //             acum = acum + this.getDistance(domicilios[i].markers[j-1],domicilios[i].markers[j])
+    //             domicilios[i].markers[j].distance = Math.round(acum)
+    //         }
+    //         domicilios[i].distance = domicilios[i].markers[TAMANOMARCAS-1].distance
+    //         this.afDB.object('domicilios/'+domicilios[i].id).set(domicilios[i]);
+    //     }
+    // }
 
     public buscarPosicionEnRecorrido(domicilio:IDomicilio,tiempoTranscurrido:number):number {
         //SAVED_DOMICILIOS.slice(0).find(run => run.id == id)

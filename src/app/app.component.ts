@@ -43,7 +43,7 @@ export class AppComponent {
 
   ngOnInit() {
     //debugger
-    this.lugaresService.cargarBasedeDatosDomicilios();
+    //this.lugaresService.cargarBasedeDatosDomicilios();
   }
 
 }
