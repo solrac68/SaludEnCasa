@@ -2,24 +2,33 @@
     <a routerLink= "/domicilios">Domicilios</a>
 </div>
 <div *ngIf="visible" class="p-3 mb-2 bg-danger text-white">{{error}}</div>
-<agm-map  [latitude]="lat" [longitude]="lng" [zoom]="17">
-    <agm-marker *ngFor="let posi of posiciones" [latitude]="posi.lat" [longitude]="posi.lng"></agm-marker>
-    <!-- <agm-marker [latitude]="latn" [longitude]="lngn"></agm-marker> -->
+<agm-map  [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+    <agm-marker *ngFor="let posi of posiciones" [label]="posi.label" [latitude]="posi.lat" [longitude]="posi.lng"></agm-marker>
+    <agm-polyline>
+      <ng-container *ngFor="let x of markas">
+          <agm-polyline-point [latitude]="x.lat" [longitude]="x.lng">
+          </agm-polyline-point>
+      </ng-container>
+    </agm-polyline>
 </agm-map>
 <br/>
 <div class = "container">
+  <h5>{{ahora | date:'medium'| uppercase}}</h5>
   <ul class="list-group">
     <ng-container *ngFor="let domicilio of domicilios">
       <div class="row align-items-start">
         <div class="col-12">
           <li class="list-group-item">
-            <h3>Destinatario: {{ domicilio.destinatario}}</h3>
+            <h3>Domicilio: {{domicilio.id}} Destinatario: {{ domicilio.destinatario}}</h3>
+            <h4>Estado: {{domicilio.terminado?"Entregado":"En proceso.."}}</h4>
             <small>Fecha y hora de salida: {{domicilio.dateInicio | date:'medium' | uppercase}}</small><br/>
             <small>Fecha y hora de entrega: {{domicilio.dateEntrega | date:'medium' | uppercase}}</small><br/>
-            <small>Fecha de retorno: {{domicilio.dateRetorno | date:'medium' | uppercase}}</small><br/>
-            <small>Latitud: {{domicilio.posicion.lat}}</small><br/>
-            <small>Longitud: {{domicilio.posicion.lng}}</small><br/>
-            <small>distancia: {{domicilio.posicion.distance}}</small><br/>
+            <small>Fecha y hora de retorno: {{domicilio.dateRetorno | date:'medium' | uppercase}}</small><br/>
+            <div *ngIf="id == 'entrega'">
+              <small>Latitud: {{domicilio.posicion.lat}}</small><br/>
+              <small>Longitud: {{domicilio.posicion.lng}}</small><br/>
+              <small>distancia: {{domicilio.posicion.distance}}</small><br/>
+            </div>
           </li>
         </div>
       </div>

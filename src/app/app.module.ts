@@ -49,7 +49,7 @@ const appRoutes:Routes = [
   {path:'checkout', component: CheckoutComponent},
   {path:'listaProductos', component: ProductosComponent},
   {path:'crear/:id', component: CrearComponent, canActivate:[MyGuard]},
-  {path:'lugares', component: LugaresComponent},
+  {path:'lugares/:id', component: LugaresComponent},
   {path:'domicilios', component: ActivityListComponent},
 ]
 

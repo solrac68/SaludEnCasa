@@ -25,7 +25,7 @@ export class ActivityListComponent implements OnInit {
 
   entregar() {
     this.lugaresService.guardarDomicilios(this.domicilios)
-    this.router.navigate(['/lugares']);
+    this.router.navigate(['/lugares/entrega']);
   }
 
 }

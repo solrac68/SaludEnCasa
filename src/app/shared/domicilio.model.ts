@@ -15,4 +15,5 @@ export interface marker {
 	lat: number;
   lng: number;
   distance?: number
+  label: string
 }

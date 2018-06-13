@@ -52,6 +52,11 @@ export class LugaresService{
         }
     }
 
+    public guardarDomicilio(domicilio:IDomicilio)
+    {
+            this.afDB.object('domicilios/'+domicilio.id).set(domicilio);
+    }
+
     public cargarBasedeDatosDomicilios()
     {
         let domicilios = this.getDomicilios()
@@ -73,6 +78,14 @@ export class LugaresService{
         let distanciaAlcanzada:number = tiempoTranscurrido*this.VELOCIDAD // Distancia alcanzada en metros
         //console.log("distanciaAlcanzada: " + distanciaAlcanzada)
         return domicilio.markers.slice(0).findIndex(run => run.distance > distanciaAlcanzada )
+    }
+
+    public getfechaEntrega(domicilio:IDomicilio):number {
+        return domicilio.dateInicio + 1000*(domicilio.distance/Math.round(this.VELOCIDAD))
+    }
+
+    public getfechaRetorno(domicilio:IDomicilio):number {
+        return domicilio.dateInicio + 2000*(domicilio.distance/Math.round(this.VELOCIDAD))
     }
 
     public buscarLugar(id){
