@@ -7,10 +7,9 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
-  templateUrl: './registro.component.html'
+  templateUrl: './registro.componentretorno.html'
 })
-
-export class RegistroComponent {
+export class RegistroComponentRetorno {
   registro:any = {};
   usuario:any = {};
   code = "";
@@ -19,16 +18,17 @@ export class RegistroComponent {
   x = 0;
   rand = 0;
 
-  constructor(private autorizacionService:AutorizacionService, private usuariosService: UsuariosService, private route:Router){}
+  constructor(private autorizacionService:AutorizacionService, private usuariosService: UsuariosService, private route:Router){
 
+  }
 
   public guardarUsuario(){
       this.usuario.id = Date.now()
       this.usuariosService.createUsuario(this.usuario).then(() =>{
-          this.usuario = {};
-      })
-      this.autorizacionService.registro(this.usuario.email,this.usuario.password)
-      this.autorizacionService.logout()
-      this.route.navigate([''])
+        this.usuario = {};
+      });
+      this.autorizacionService.registro(this.usuario.email,this.usuario.password);
+      this.autorizacionService.logout();
+      this.route.navigate(['']);
     }
 }

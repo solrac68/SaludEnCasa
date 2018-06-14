@@ -28,6 +28,7 @@ import {ProductosComponent} from './admin/Productos.component';
 import {CrearComponent} from './crear/crear.component';
 import {LugaresComponent} from './lugares/lugares.component';
 import {ActivityListComponent} from './activity-list/activity-list.component';
+import { RegistroComponentRetorno } from './registro/registro.componentretorno';
 
 
 export const firebaseConfig = {
@@ -51,6 +52,7 @@ const appRoutes:Routes = [
   {path:'crear/:id', component: CrearComponent, canActivate:[MyGuard]},
   {path:'lugares/:id', component: LugaresComponent},
   {path:'domicilios', component: ActivityListComponent},
+  {path:'registroRetorno/:id', component: RegistroComponentRetorno},
 ]
 
 
@@ -69,7 +71,8 @@ const appRoutes:Routes = [
     ProductosComponent,
     CrearComponent,
     LugaresComponent,
-    ActivityListComponent
+    ActivityListComponent,
+    RegistroComponentRetorno
   ],
   imports: [
     BrowserModule,

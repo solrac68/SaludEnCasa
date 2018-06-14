@@ -24,5 +24,10 @@ export class UsuariosService{
     return this.afDB.database.ref('/usuarios/' + usuario.id).set(usuario);
   }
 
+  public getUsuarioByEmail(email)
+  {
+        return this.afDB.database.ref('usuarios').orderByChild('email').equalTo(email);
+  }
+
   //public deleteUsuario(usuario){}
 }

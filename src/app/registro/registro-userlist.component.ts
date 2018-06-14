@@ -21,6 +21,7 @@ export class UsuariosListComponent {
   }
 
   seleccionarUsuario(usuario){
+    debugger
     console.log(usuario);
     //Abrir un modal y cargar datos para editar
   }

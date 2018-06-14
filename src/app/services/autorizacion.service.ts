@@ -5,6 +5,8 @@ import {Router} from "@angular/router";
 @Injectable()
 export class AutorizacionService{
 
+    autorizado:Boolean = false;
+
     constructor (private angularFireAuth:AngularFireAuth, private router:Router) {
         this.isLogged()
     }
@@ -47,4 +49,6 @@ export class AutorizacionService{
     public getEmail(){
         return this.angularFireAuth.auth.currentUser.email;
     }
+
+    
 }
