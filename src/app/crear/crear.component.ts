@@ -6,6 +6,9 @@ import 'rxjs/Rx';
 import {Observable} from 'rxjs';
 import { FormControl } from '@angular/forms';
 import {Http} from "@angular/http";
+import { AutorizacionService } from '../services/autorizacion.service';
+import { UsuariosService } from '../services/usuarios.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crear',
@@ -20,6 +23,7 @@ export class CrearComponent {
     if(this.id != 'new'){
       this.productosService.updateProducto(this.producto);
       alert('Editado con éxito');
+      this.route.navigate(['/listaProductos']);
     }
     else{
       this.producto.id = Date.now(); // Para generar un id diferente cada vez ... 
@@ -30,15 +34,45 @@ export class CrearComponent {
     this.producto = {};
   }
 
-  constructor(private productosService:ProductService,private route:ActivatedRoute){
-    this.id = route.snapshot.params['id'];
+  constructor(private productosService: ProductService, 
+              private autorizatioService:AutorizacionService, 
+              private usuariosService:UsuariosService, 
+              private route:Router,
+              private routeA:ActivatedRoute){
+  }
 
-    if(this.id != 'new'){
-      productosService.obtenerProducto(this.id)
-        .valueChanges().subscribe((producto)=>{
-          // debugger;
-          this.producto = producto;
-    });
-    }
+  ngOnInit(){
+    this.autorizatioService.isLogged()
+    .subscribe(
+        (result) =>{
+            if(result && result.uid){
+                let email = result.email
+                this.usuariosService.getUsuarioByEmail(email).on("value",(snapshot)=> {
+                    //debugger;
+                    let usuarios = snapshot.val();
+                    usuarios = Object.keys(usuarios).map((key)=>usuarios[key]);
+                    usuarios = usuarios.filter((obj) => {return obj.tipo == 1});
+                    if (usuarios.length > 0){
+                      this.id = this.routeA.snapshot.params['id'];  
+                      if(this.id != 'new'){
+                        this.productosService.obtenerProducto(this.id)
+                          .valueChanges().subscribe((producto)=>{
+                            //debugger;
+                            this.producto = producto;
+                          });
+                        }    
+                    }
+                    else {
+                      alert("No esta autorizado para este servicio")
+                      this.route.navigate(['']);
+                    }
+                });
+              }else{
+                alert("No esta autorizado para este servicio")
+                this.route.navigate(['']);
+              }
+        }
+    )
+    
   }
 }

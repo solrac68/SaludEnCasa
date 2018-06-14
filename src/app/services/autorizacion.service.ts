@@ -15,7 +15,6 @@ export class AutorizacionService{
             .then((response)=>{
                 alert('Usuario Logeado con exito');
                 console.log(response);
-                this.router.navigate(['lugares']);
             })
             .catch((error) => {
                 alert('Un error ha ocurrido')
@@ -26,9 +25,8 @@ export class AutorizacionService{
     public registro = (email,password) => {
         this.angularFireAuth.auth.createUserWithEmailAndPassword(email,password)
             .then((response)=>{
-                //alert('Usuario registrado con exito');
+                alert('Usuario registrado con exito');
                 console.log(response);
-                this.router.navigate(['lugares']);
             })
             .catch((error) => {
                 //alert('Un error ha ocurrido')
@@ -42,8 +40,6 @@ export class AutorizacionService{
 
     public logout(){
         this.angularFireAuth.auth.signOut();
-        //alert('Sesión Cerrada');
-        this.router.navigate(['lugares']);
     }
 
     public getEmail(){
