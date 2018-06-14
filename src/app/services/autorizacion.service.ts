@@ -13,11 +13,11 @@ export class AutorizacionService{
     public login = (email,password) => {
         this.angularFireAuth.auth.signInWithEmailAndPassword(email,password)
             .then((response)=>{
-                alert('Usuario Logeado con exito');
+                //alert('Usuario Logeado con exito');
                 console.log(response);
             })
             .catch((error) => {
-                alert('Un error ha ocurrido')
+                ///alert('Un error ha ocurrido')
                 console.log(error);
             })
     }
@@ -25,7 +25,7 @@ export class AutorizacionService{
     public registro = (email,password) => {
         this.angularFireAuth.auth.createUserWithEmailAndPassword(email,password)
             .then((response)=>{
-                alert('Usuario registrado con exito');
+                ///alert('Usuario registrado con exito');
                 console.log(response);
             })
             .catch((error) => {
