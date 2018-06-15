@@ -46,7 +46,7 @@ const appRoutes:Routes = [
   {path:'registro', component: RegistroComponent},
   {path:'producto', component: ProductoComponent},
   {path:'comprar', component: ProductoListComponent},
-  {path:'usuarios', component: UsuariosListComponent, canActivate:[MyGuard]},
+  {path:'usuarios', component: UsuariosListComponent},
   {path:'checkout', component: CheckoutComponent},
   {path:'listaProductos', component: ProductosComponent},
   {path:'crear/:id', component: CrearComponent},

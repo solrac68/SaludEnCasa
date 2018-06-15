@@ -24,6 +24,17 @@ export class RegistroComponent {
 
   public guardarUsuario(){
       this.usuario.id = Date.now()
+      switch (+this.usuario.tipo) {
+        case 1:
+          this.usuario.tipoT = "Administrador"
+          break;
+        case 2:
+          this.usuario.tipoT = "Mensajero"
+          break;
+        case 3:
+          this.usuario.tipoT = "Cliente"
+          break;
+      }
       this.usuariosService.createUsuario(this.usuario).then(() =>{
           this.usuario = {};
       })

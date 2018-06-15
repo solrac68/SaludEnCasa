@@ -63,12 +63,12 @@ export class CrearComponent {
                         }    
                     }
                     else {
-                      alert("No esta autorizado para este servicio")
+                      //alert("No esta autorizado para este servicio")
                       this.route.navigate(['']);
                     }
                 });
               }else{
-                alert("No esta autorizado para este servicio")
+                //alert("No esta autorizado para este servicio")
                 this.route.navigate(['']);
               }
         }

@@ -29,6 +29,7 @@ export class ProductosComponent {
   }
 
   ngOnInit(){
+    debugger
     this.autorizatioService.isLogged()
     .subscribe(
         (result) =>{

@@ -16,13 +16,10 @@ export class UsuariosListComponent {
     this.usuariosService.getUsuarios().valueChanges()
       .subscribe((fbUsuarios)=>{
         this.usuarios = fbUsuarios;
-        console.log(this.usuarios);
       })
   }
 
   seleccionarUsuario(usuario){
-    debugger
-    console.log(usuario);
     //Abrir un modal y cargar datos para editar
   }
 
